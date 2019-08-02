@@ -39,3 +39,16 @@ function handle_error {
 }
 
 trap 'handle_error "$?: ${BASH_SOURCE[0]}:$LINENO"' ERR
+
+# Assertions
+
+is_number() {
+    re='^[0-9]+$'
+
+    if [[ $1 =~ $re ]] ;
+    then
+        true
+    else
+        false
+    fi
+}
