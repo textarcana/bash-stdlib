@@ -54,7 +54,7 @@ is_number() {
 }
 
 is_UUID() {
-    UUID_regex='^\s*[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89ab][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\s*$'
+    UUID_regex='^\s*[0-9a-fA-F]{8,8}-[0-9a-fA-F]{4,4}-[1-5][0-9a-fA-F]{3,3}-[89ab][0-9a-fA-F]{3,3}-[0-9a-fA-F]{12,12}\s*$'
 
     if [[ "$1" =~ $UUID_regex ]]
     then
