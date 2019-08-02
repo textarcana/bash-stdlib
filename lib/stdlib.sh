@@ -65,12 +65,7 @@ is_UUID() {
 }
 
 is_sha() {
-    sha_regex='^\s*[A-Fa-f0-9]{32}\s*$'
+    sha_regex='^\s*[A-Fa-f0-9]{32,32}\s*$'
 
-    if [[ "$1" =~ $sha_regex ]]
-    then
-        true
-    else
-        false
-    fi
+    [[ "$1" =~ $sha_regex ]]
 }
