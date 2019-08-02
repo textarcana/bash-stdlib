@@ -33,7 +33,7 @@ function err {
 # Show line numbers of errors.
 function handle_error {
     local retval=$?
-    local line=$1
+    local line=${1-}
     log " ${line}: $BASH_COMMAND"
     exit $retval
 }
@@ -45,17 +45,17 @@ trap 'handle_error "$?: ${BASH_SOURCE[0]}:$LINENO"' ERR
 is_number() {
     integer_regex='^[0-9]+$'
 
-    [[ $1 =~ $integer_regex ]]
+    [[ ${1-} =~ $integer_regex ]]
 }
 
 is_UUID() {
     UUID_regex='^\s*[0-9a-fA-F]{8,8}-[0-9a-fA-F]{4,4}-[1-5][0-9a-fA-F]{3,3}-[89ab][0-9a-fA-F]{3,3}-[0-9a-fA-F]{12,12}\s*$'
 
-    [[ "$1" =~ $UUID_regex ]]
+    [[ "${1-}" =~ $UUID_regex ]]
 }
 
 is_sha() {
     sha_regex='^\s*[A-Fa-f0-9]{32,32}\s*$'
 
-    [[ "$1" =~ $sha_regex ]]
+    [[ "${1-}" =~ $sha_regex ]]
 }
