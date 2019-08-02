@@ -18,11 +18,22 @@ set -Eeuo pipefail
 
 # Standard library of bash functions and helpers.
 
+# Write log-formatted error messages
+function log {
+    echo "$(date --iso=s):ERROR:$@"
+}
+
+# Send error messages
+function err {
+    echo "ERROR:$@"
+    exit 1
+}
+
 # Show line numbers of errors.
 function handle_error {
     local retval=$?
     local line=$1
-    echo "ERROR ${line}: $BASH_COMMAND"
+    log " ${line}: $BASH_COMMAND"
     exit $retval
 }
 
