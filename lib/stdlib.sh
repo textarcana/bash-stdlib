@@ -43,9 +43,31 @@ trap 'handle_error "$?: ${BASH_SOURCE[0]}:$LINENO"' ERR
 # Assertions
 
 is_number() {
-    re='^[0-9]+$'
+    integer_regex='^[0-9]+$'
 
-    if [[ $1 =~ $re ]] ;
+    if [[ $1 =~ $integer_regex ]]
+    then
+        true
+    else
+        false
+    fi
+}
+
+is_UUID() {
+    UUID_regex='^\s*[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89ab][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\s*$'
+
+    if [[ "$1" =~ $UUID_regex ]]
+    then
+        true
+    else
+        false
+    fi
+}
+
+is_sha() {
+    sha_regex='^\s*[A-Fa-f0-9]{32}\s*$'
+
+    if [[ "$1" =~ $sha_regex ]]
     then
         true
     else
