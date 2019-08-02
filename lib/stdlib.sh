@@ -25,8 +25,9 @@ function log {
 
 # Send error messages
 function err {
+    echo
     echo "ERROR:$@"
-    exit 1
+    echo
 }
 
 # Show line numbers of errors.
