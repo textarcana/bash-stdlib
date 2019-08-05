@@ -48,7 +48,7 @@ is_number() {
     [[ ${1-} =~ $integer_regex ]]
 }
 
-is_UUID() {
+is_uuid() {
     UUID_regex='^\s*[0-9a-fA-F]{8,8}-[0-9a-fA-F]{4,4}-[1-5][0-9a-fA-F]{3,3}-[89ab][0-9a-fA-F]{3,3}-[0-9a-fA-F]{12,12}\s*$'
 
     [[ "${1-}" =~ $UUID_regex ]]
