@@ -18,19 +18,8 @@ set -Eeuo pipefail
 
 # Standard library of bash functions and helpers.
 
-# Write log-formatted error messages
-function log {
-    echo "$(date --iso=s):ERROR:$@"
-}
-
-# Send error messages
-function err {
-    echo
-    echo "ERROR:$@"
-    echo
-}
-
 # Show line numbers of errors.
+
 function handle_error {
     local retval=$?
     local line=${1-}
@@ -39,6 +28,39 @@ function handle_error {
 }
 
 trap 'handle_error "$?: ${BASH_SOURCE[0]}:$LINENO"' ERR
+
+# bail() is a function that exits the script even if called from
+# within a function or subshell.
+
+trap "exit 1" TERM
+
+export TOP_PID=$$
+
+bail(){
+    kill -s TERM "$TOP_PID"
+}
+
+# Logging Functions
+
+log(){
+    echo "$(date --iso=s): INFO: $@"
+}
+
+log_debug(){
+    echo "$(date --iso=s): DEBUG: $@"
+}
+
+log_warn(){
+    echo "$(date --iso=s): WARN: $@"
+}
+
+log_err(){
+    echo "$(date --iso=s): ERROR: $@"
+}
+
+log_critical(){
+    echo "$(date --iso=s): CRITICAL: $@"
+}
 
 # Assertions
 
