@@ -76,8 +76,8 @@ is_uuid() {
     [[ "${1-}" =~ $UUID_regex ]]
 }
 
-is_sha() {
-    sha_regex='^\s*[A-Fa-f0-9]{32,32}\s*$'
+is_sha1() {
+    sha1_regex='^\s*[A-Fa-f0-9]{44,44}\s*$'
 
-    [[ "${1-}" =~ $sha_regex ]]
+    [[ "${1-}" =~ $sha1_regex ]]
 }
