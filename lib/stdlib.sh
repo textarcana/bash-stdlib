@@ -23,7 +23,7 @@ set -Eeuo pipefail
 function handle_error {
     local retval=$?
     local line=${1-}
-    log " ${line}: $BASH_COMMAND"
+    log_err " ${line}: $BASH_COMMAND"
     exit $retval
 }
 
@@ -79,5 +79,5 @@ is_uuid() {
 is_sha1() {
     sha1_regex='^\s*[A-Fa-f0-9]{44,44}\s*$'
 
-    [[ "${1-}" =~ $sha1_regex ]]
+    [[ "${1-}" =~ $sha_regex ]]
 }
