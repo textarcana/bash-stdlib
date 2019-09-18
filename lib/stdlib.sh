@@ -46,8 +46,6 @@ log(){
     echo "$(date --iso=s): INFO: $@"
 }
 
-log_function=log
-
 log_debug(){
     echo "$(date --iso=s): DEBUG: $@"
 }
@@ -88,4 +86,14 @@ is_sha1() {
     sha1_regex='^\s*[A-Fa-f0-9]{44,44}\s*$'
 
     [[ "${1-}" =~ $sha_regex ]]
+}
+
+# Tools for working with Associative Arrays, a.k.a Hash Tables,
+# a.k.a. Hashes
+#
+# Requires bash 4 for the `declare -A <foo>` syntax to declare a hash
+# in bash.
+
+keys(){
+    echo $(eval "echo \${!$1[@]}")
 }
