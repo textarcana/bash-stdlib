@@ -93,7 +93,13 @@ is_sha1() {
 #
 # Requires bash 4 for the `declare -A <foo>` syntax to declare a hash
 # in bash.
+#
+# See https://stackoverflow.com/questions/1494178/how-to-define-hash-tables-in-bash
 
 keys(){
     echo $(eval "echo \${!$1[@]}")
+}
+
+values(){
+    echo $(eval "echo \${$1[@]}")
 }
