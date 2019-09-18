@@ -46,6 +46,8 @@ log(){
     echo "$(date --iso=s): INFO: $@"
 }
 
+log_function=log
+
 log_debug(){
     echo "$(date --iso=s): DEBUG: $@"
 }
@@ -60,6 +62,12 @@ log_err(){
 
 log_critical(){
     echo "$(date --iso=s): CRITICAL: $@"
+}
+
+now_the_log_level_is_debug(){
+    log(){
+        log_debug $@
+    }
 }
 
 # Assertions
