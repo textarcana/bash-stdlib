@@ -70,19 +70,19 @@ now_the_log_level_is_debug(){
 
 # Assertions
 
-is_number() {
+is_number(){
     integer_regex='^[0-9]+$'
 
     [[ ${1-} =~ $integer_regex ]]
 }
 
-is_uuid() {
+is_uuid(){
     UUID_regex='^\s*[0-9a-fA-F]{8,8}-[0-9a-fA-F]{4,4}-[1-5][0-9a-fA-F]{3,3}-[89ab][0-9a-fA-F]{3,3}-[0-9a-fA-F]{12,12}\s*$'
 
     [[ "${1-}" =~ $UUID_regex ]]
 }
 
-is_sha1() {
+is_sha1(){
     sha1_regex='^\s*[A-Fa-f0-9]{44,44}\s*$'
 
     [[ "${1-}" =~ $sha_regex ]]
