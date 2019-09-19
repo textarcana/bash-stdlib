@@ -14,7 +14,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-set -Eeuo pipefail
+set -euo pipefail
 
 # Standard library of bash functions and helpers.
 
@@ -86,6 +86,10 @@ is_sha1(){
     sha1_regex='^\s*[A-Fa-f0-9]{44,44}\s*$'
 
     [[ "${1-}" =~ $sha_regex ]]
+}
+
+not_empty_string(){
+    test -n "${1}"
 }
 
 # Tools for working with Associative Arrays, a.k.a Hash Tables,
