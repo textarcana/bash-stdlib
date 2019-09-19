@@ -89,7 +89,7 @@ is_sha1(){
 }
 
 not_empty_string(){
-    test -n "${1}"
+    test -n "${1-}"
 }
 
 # Tools for working with Associative Arrays, a.k.a Hash Tables,
