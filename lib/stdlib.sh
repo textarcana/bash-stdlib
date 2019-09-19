@@ -85,7 +85,7 @@ is_uuid(){
 is_sha1(){
     sha1_regex='^\s*[A-Fa-f0-9]{44,44}\s*$'
 
-    [[ "${1-}" =~ $sha_regex ]]
+    [[ "${1-}" =~ $sha1_regex ]]
 }
 
 not_empty_string(){
